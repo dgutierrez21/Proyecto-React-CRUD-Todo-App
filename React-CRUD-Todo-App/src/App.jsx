@@ -1,8 +1,12 @@
+import { useState } from "react";
 import CustomForm from "./components/CustomForm";
 
 function App() {
+  const [tasks, setTasks] = useState([]);
   function addTask(task) {
     console.log(task);
+
+    setTasks([...tasks, task]);
   }
   return (
     <div className="container">
