@@ -1,11 +1,17 @@
 import { PlusIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 
-const CustomForm = () => {
+const CustomForm = ({ addTask }) => {
   const [task, setTask] = useState("");
 
   function handleFormSubmit(e) {
     e.preventDefault();
+
+    addTask({
+      name: task,
+      checked: false,
+      id: Date.now(),
+    });
 
     setTask("");
   }
