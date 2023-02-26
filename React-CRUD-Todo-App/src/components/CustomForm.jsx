@@ -1,3 +1,5 @@
+import { PlusIcon } from "@heroicons/react/24/solid";
+
 const CustomForm = () => {
   function handleFormSubmit(e) {
     e.preventDefault();
@@ -19,6 +21,10 @@ const CustomForm = () => {
           Enter Task
         </label>
       </div>
+
+      <button aria-label="Add Task" type="submit" className="btn">
+        <PlusIcon />
+      </button>
     </form>
   );
 };
