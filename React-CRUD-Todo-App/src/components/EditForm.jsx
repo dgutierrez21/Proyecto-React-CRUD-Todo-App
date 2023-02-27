@@ -19,7 +19,11 @@ const EditForm = ({ editedTask, updateTask, closeEditMode }) => {
   }, []);
 
   return (
-    <div role="dialog" aria-labelledby="editTask">
+    <div
+      onClick={(e) => e.target === e.currentTarget && closeEditMode()}
+      role="dialog"
+      aria-labelledby="editTask"
+    >
       <form onSubmit={handleFormSubmit} className="todo">
         <div className="wrapper">
           <input
