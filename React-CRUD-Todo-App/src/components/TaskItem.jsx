@@ -8,11 +8,13 @@ import {
 
 import { useState } from "react";
 
-export const TaskItem = ({ task, deleteTask }) => {
+export const TaskItem = ({ task, deleteTask, toggleTask }) => {
   const [isChecked, setIsChecked] = useState(task.checked);
 
   function handleCheckBoxChange() {
     setIsChecked(!isChecked);
+
+    toggleTask(task.id);
   }
   return (
     <li className={styles.task}>
