@@ -5,6 +5,8 @@ import { TaskList } from "./components/TaskList";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+
   function addTask(task) {
     console.log(task);
 
@@ -21,18 +23,26 @@ function App() {
     );
   }
 
+  function enterEditMode(task) {
+    setIsEditing(true)
+  }
+
   return (
     <div className="container">
       <header>
         <h1>My Task List</h1>
       </header>
-      <EditForm />
+      {isEditing && (
+        <EditForm />
+      )}
+
       <CustomForm addTask={addTask} />
       {tasks && (
         <TaskList
           tasks={tasks}
           deleteTask={deleteTask}
           toggleTask={toggleTask}
+          enterEditMode={enterEditMode}
         />
       )}
     </div>

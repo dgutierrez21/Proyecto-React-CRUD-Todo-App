@@ -8,7 +8,7 @@ import {
 
 import { useState } from "react";
 
-export const TaskItem = ({ task, deleteTask, toggleTask }) => {
+export const TaskItem = ({ task, deleteTask, toggleTask, enterEditMode }) => {
   const [isChecked, setIsChecked] = useState(task.checked);
 
   function handleCheckBoxChange() {
@@ -36,7 +36,11 @@ export const TaskItem = ({ task, deleteTask, toggleTask }) => {
       </div>
 
       <div className={styles["task-group"]}>
-        <button aria-label={`Update ${task.name} Task`} className="btn">
+        <button
+          onClick={() => enterEditMode(task)}
+          aria-label={`Update ${task.name} Task`}
+          className="btn"
+        >
           <PencilSquareIcon width={24} height={24} />
         </button>
 
