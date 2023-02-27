@@ -8,6 +8,8 @@ function App() {
   const [editedTask, setEditedTask] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
+  const [previusFocuslEl, setPreviusFocusEl] = useState(null);
+
   function addTask(task) {
     console.log(task);
 
@@ -35,10 +37,13 @@ function App() {
   function enterEditMode(task) {
     setEditedTask(task);
     setIsEditing(true);
+    setPreviusFocusEl(document.activeElement);
   }
 
   function closeEditMode() {
     setIsEditing(false);
+
+    previusFocuslEl.focus();
   }
 
   return (
