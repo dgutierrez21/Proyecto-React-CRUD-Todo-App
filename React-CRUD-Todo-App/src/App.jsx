@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CustomForm from "./components/CustomForm";
+import EditForm from "./components/EditForm";
 import { TaskList } from "./components/TaskList";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       <header>
         <h1>My Task List</h1>
       </header>
+      <EditForm />
       <CustomForm addTask={addTask} />
       {tasks && (
         <TaskList
