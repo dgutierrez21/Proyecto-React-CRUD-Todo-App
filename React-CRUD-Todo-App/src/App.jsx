@@ -5,6 +5,7 @@ import { TaskList } from "./components/TaskList";
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [editedTask, setEditedTask] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
 
   function addTask(task) {
@@ -23,8 +24,21 @@ function App() {
     );
   }
 
+  function updateTask(task) {
+    setTasks(
+      tasks.map((t) => (t.id === task.id ? { ...t, name: task.name } : t))
+    );
+
+    closeEditMode();
+  }
+
   function enterEditMode(task) {
-    setIsEditing(true)
+    setEditedTask(task);
+    setIsEditing(true);
+  }
+
+  function closeEditMode() {
+    setIsEditing(false);
   }
 
   return (
@@ -33,7 +47,7 @@ function App() {
         <h1>My Task List</h1>
       </header>
       {isEditing && (
-        <EditForm />
+        <EditForm editedTask={editedTask} updateTask={updateTask} />
       )}
 
       <CustomForm addTask={addTask} />
