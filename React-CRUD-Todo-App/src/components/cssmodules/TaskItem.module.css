@@ -72,3 +72,7 @@
 .checkbox:checked + label {
   text-decoration: line-through;
 }
+
+.delete {
+  --accent: var(--accent1);
+}
