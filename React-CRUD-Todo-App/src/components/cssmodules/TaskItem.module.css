@@ -1,0 +1,74 @@
+.task {
+  align-items: center;
+  border-radius: calc(var(--_radius) * 2);
+  border: 0.2em solid hsl(var(--muted) / 0.8);
+  display: flex;
+  font-size: var(--_size);
+  gap: 0.6em;
+  justify-content: space-between;
+  padding: 0.6em;
+}
+
+.task-group {
+  --taskgroup-gap: 0.5em;
+  align-items: center;
+  display: flex;
+  gap: var(--taskgroup-gap);
+}
+
+.label {
+  cursor: pointer;
+  line-height: 1.4;
+  position: relative;
+  text-align: left;
+}
+
+.checkmark {
+  border-radius: var(--_radius);
+  color: hsl(var(--muted));
+  content: "";
+  display: grid;
+  height: 1em;
+  place-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translate3d(calc(-100% - var(--taskgroup-gap)), -50%, 0);
+  transition: background-color 80ms ease-in-out;
+  width: 1em;
+}
+
+.checkmark svg {
+  width: 0.75em;
+  height: 0.75em;
+}
+
+.checkbox {
+  appearance: none;
+  background-color: hsl(var(--muted));
+  border-radius: var(--_radius);
+  border-radius: var(--_radius);
+  box-shadow: 0 0 0.5em hsl(var(--accent) / 0.1),
+    0 0 0 0.05em hsl(var(--accent) / 0.5), 0 0 0 -0.2em hsl(var(--accent));
+  flex-shrink: 0;
+  height: 1em;
+  transition: box-shadow var(--_tspeed_fast) ease-in-out,
+    background-color 80ms ease-in-out;
+  width: 1em;
+}
+
+.checkbox:focus {
+  outline: none;
+}
+
+.checkbox:is(:focus-visible, :hover) {
+  box-shadow: 0 0 0 hsl(var(--bg)), 0 0 0 0.05em hsl(var(--accent)),
+    0 0 0 0.225em hsl(var(--accent) / 0.3);
+}
+
+.checkbox:checked {
+  background-color: hsl(var(--accent));
+}
+
+.checkbox:checked + label {
+  text-decoration: line-through;
+}
