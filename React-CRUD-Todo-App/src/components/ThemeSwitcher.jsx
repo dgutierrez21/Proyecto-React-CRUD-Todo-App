@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "./cssmodules/ThemeSwitcher.module.css";
 
@@ -11,10 +11,12 @@ import {
 
 export const ThemeSwitcher = () => {
   const [isColorPicking, setIsColorPicking] = useState(false);
-
   const [theme, setTheme] = useState("light");
-
   const [hue, setHue] = useState("240");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("color-scheme", theme);
+  }, [theme]);
 
   const changeTheme = theme === "light" ? "dark" : "light";
 
