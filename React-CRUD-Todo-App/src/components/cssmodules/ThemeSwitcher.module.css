@@ -14,3 +14,10 @@
   display: flex;
   gap: 1em;
 }
+
+.close {
+  position: absolute;
+  top: -2em;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
