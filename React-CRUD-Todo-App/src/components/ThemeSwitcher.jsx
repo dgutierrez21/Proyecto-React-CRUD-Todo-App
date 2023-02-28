@@ -18,6 +18,10 @@ export const ThemeSwitcher = () => {
     document.documentElement.setAttribute("color-scheme", theme);
   }, [theme]);
 
+  useEffect(() => {
+    document.documentElement.style.setProperty("--_hue", hue);
+  }, [hue]);
+
   const changeTheme = theme === "light" ? "dark" : "light";
 
   const handleThemeBtn = () => setTheme(changeTheme);
