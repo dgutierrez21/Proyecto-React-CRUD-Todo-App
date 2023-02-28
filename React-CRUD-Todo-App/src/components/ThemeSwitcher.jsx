@@ -27,7 +27,14 @@ export const ThemeSwitcher = () => {
   const handleThemeBtn = () => setTheme(changeTheme);
 
   return (
-    <aside className={styles.wrapper}>
+    <aside
+      style={{
+        backgroundColor: isColorPicking
+          ? "hsl(var(--muted) / .6)"
+          : "transparent",
+      }}
+      className={styles.wrapper}
+    >
       {isColorPicking ? (
         <>
           <button
