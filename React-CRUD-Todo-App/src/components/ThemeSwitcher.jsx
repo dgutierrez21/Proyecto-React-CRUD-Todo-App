@@ -14,6 +14,8 @@ export const ThemeSwitcher = () => {
 
   const [theme, setTheme] = useState("light");
 
+  const [hue, setHue] = useState("240");
+
   const changeTheme = theme === "light" ? "dark" : "light";
 
   const handleThemeBtn = () => setTheme(changeTheme);
@@ -29,7 +31,15 @@ export const ThemeSwitcher = () => {
           >
             <XMarkIcon />
           </button>
-          <input type="range" />
+
+          <input
+            min="0"
+            max="360"
+            value={hue}
+            onInput={(e) => setHue(e.target.value)}
+            className={styles.picker}
+            type="range"
+          />
         </>
       ) : (
         <div className={styles.btns}>
