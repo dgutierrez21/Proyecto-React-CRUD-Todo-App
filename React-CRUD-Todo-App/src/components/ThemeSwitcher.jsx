@@ -9,10 +9,18 @@ import {
   MoonIcon,
 } from "@heroicons/react/24/outline";
 
+import useLocalStorage from "../hooks/useLocalStorage";
+
 export const ThemeSwitcher = () => {
   const [isColorPicking, setIsColorPicking] = useState(false);
-  const [theme, setTheme] = useState("light");
-  const [hue, setHue] = useState("240");
+
+  const defaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const [theme, setTheme] = useLocalStorage(
+    "react-todo-theme",
+    defaultDark ? "dark" : "light"
+  );
+
+  const [hue, setHue] = useLocalStorage("react-todo-color", "240");
 
   useEffect(() => {
     document.documentElement.setAttribute("color-scheme", theme);
